@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: hotel-pos-backend
+    runtime: node
+    rootDir: apps/backend
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /health
+    envVars:
+      - key: SYSTEM_MODE
+        value: CENTRAL_MODE
+      - key: SYNC_INTERVAL_MS
+        value: "10000"
+      - key: PORT
+        value: "4000"
+      - key: TRUST_PROXY
+        value: "true"
+      - key: PG_CONNECTION_STRING
+        sync: false
+      - key: API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
