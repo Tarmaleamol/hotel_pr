@@ -3,7 +3,12 @@ import { Injectable, NestMiddleware, UnauthorizedException } from '@nestjs/commo
 @Injectable()
 export class ApiKeyMiddleware implements NestMiddleware {
   use(req: any, _res: any, next: () => void) {
-    if (req.path === '/health' || req.path === '/health/' || req.path === '/favicon.ico') {
+    if (
+      req.path === '/' ||
+      req.path === '/health' ||
+      req.path === '/health/' ||
+      req.path === '/favicon.ico'
+    ) {
       next();
       return;
     }

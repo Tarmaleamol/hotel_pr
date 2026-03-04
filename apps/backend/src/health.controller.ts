@@ -1,11 +1,23 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Head } from '@nestjs/common';
 
-@Controller('health')
+@Controller()
 export class HealthController {
   @Get()
+  root() {
+    return {
+      status: 'ok'
+    };
+  }
+
+  @Get('health')
   check() {
     return {
       status: 'ok'
     };
+  }
+
+  @Head('health')
+  checkHead() {
+    return;
   }
 }
